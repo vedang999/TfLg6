@@ -14,7 +14,7 @@ const BottomBar = () => {
   const NavItem = ({ icon: Icon, label, id }) => (
     <button
       onClick={() => handleClick(id)}
-      className={`relative flex flex-col items-center justify-center p-3 w-24 group transition-all duration-300
+      className={`relative flex flex-col items-center justify-center p-2 sm:p-3 w-20 sm:w-24 group transition-all duration-300
         ${activeItem === id ? 'text-indigo-400' : 'text-gray-400 hover:text-gray-300'}`}
     >
       <div className="relative">
@@ -23,21 +23,21 @@ const BottomBar = () => {
           ${animating === id && id === 'messages' ? 'animate-wave' : ''}
           ${animating === id && id === 'settings' ? 'animate-spin-slow' : ''}
         `}>
-          <Icon className="w-7 h-7" />
+          <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
           {id === 'messages' && (
             <div className="absolute -right-1 -top-1 w-3 h-3 bg-red-400 rounded-full border-2 border-gray-900" />
           )}
         </div>
       </div>
-      <span className="mt-1 text-xs font-medium tracking-wide">{label}</span>
+      <span className="mt-1 text-[10px] sm:text-xs font-medium tracking-wide">{label}</span>
       {activeItem === id && (
-        <div className="absolute bottom-0 w-12 h-1 bg-indigo-400 rounded-full transform transition-all duration-300" />
+        <div className="absolute bottom-0 w-10 sm:w-12 h-1 bg-indigo-400 rounded-full transform transition-all duration-300" />
       )}
     </button>
   );
 
   return (
-    <div className="flex items-center justify-center w-full bg-gray-800 bg-opacity-95 text-white p-2 rounded-xl shadow-lg backdrop-blur-sm">
+    <div className="flex items-center justify-center w-full bg-gray-800 bg-opacity-95 text-white p-3 sm:p-4 rounded-xl shadow-lg backdrop-blur-sm">
       <style>
         {`
           @keyframes float {
@@ -64,7 +64,7 @@ const BottomBar = () => {
           }
         `}
       </style>
-      <nav className="flex items-center space-x-6">
+      <nav className="flex items-center justify-between w-full max-w-md mx-auto space-x-4">
         <NavItem icon={Home} label="Home" id="home" />
         <NavItem icon={MessageCircle} label="Messages" id="messages" />
         <NavItem icon={Settings} label="Settings" id="settings" />
